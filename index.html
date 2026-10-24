@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Birthday Letter 💙</title>
+
+<style>
+:root {
+  --ink: #526b82;
+  --muted: #7f93a5;
+  --blue: #a9c8e4;
+  --lav: #dcd6f7;
+  --paper: rgba(255,255,255,.78);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #5a6067;
+  min-height: 100vh;
+  background: linear-gradient(135deg,#eff7ff,#f1efff,#eaf8fa);
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 15%,#d9eaff 0,transparent 32%),
+    radial-gradient(circle at 88% 18%,#e2ddff 0,transparent 34%),
+    radial-gradient(circle at 50% 100%,#d4edf3 0,transparent 40%),
+    linear-gradient(135deg,#eff7ff,#f1efff,#eaf8fa);
+}
+
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px;
+}
+
+.glow {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: #fff7;
+  filter: blur(8px);
+  animation: float 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.glow.one {
+  top: 7%;
+  left: 5%;
+}
+
+.glow.two {
+  right: 6%;
+  bottom: 6%;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-22px);
+  }
+}
+
+.intro {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.eyebrow {
+  color: #7e9bb3;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font: 11px Arial, sans-serif;
+  margin-bottom: 14px;
+}
+
+h1, h2 {
+  font-weight: normal;
+  color: var(--ink);
+}
+
+.intro h1 {
+  font-size: clamp(28px,5vw,42px);
+  margin-bottom: 12px;
+}
+
+.intro p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.envelope {
+  width: 190px;
+  height: 126px;
+  background: #fbfdff;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  position: relative;
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow: 0 20px 50px #526b7a38;
+  transition: .35s;
+  isolation: isolate;
+}
+
+.envelope:hover {
+  transform: translateY(-7px) scale(1.03);
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 94px solid transparent;
+  border-right: 94px solid transparent;
+  border-top: 70px solid #a9c8e4;
+  z-index: 2;
+}
+
+.envelope:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-left: 94px solid #d6e6f3;
+  border-right: 94px solid #d6e6f3;
+  border-top: 65px solid transparent;
+  z-index: 3;
+}
+
+.heart {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%,-50%);
+  font-size: 39px;
+  filter: drop-shadow(0 5px 8px #58738a40);
+}
+
+.tap {
+  margin-top: 25px;
+  color: #6e8497;
+  font: 13px Arial, sans-serif;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .45;
+  }
+}
+
+#letterPage {
+  display: none;
+  padding: 34px 16px 45px;
+  min-height: 100vh;
+}
+
+.paper {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(24px,5vw,46px);
+  border-radius: 25px;
+  background: var(--paper);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid #ffffffc9;
+  box-shadow: 0 25px 70px #52657a30;
+  animation: open .8s ease both;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.top-heart {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 8px;
+  animation: beat 2s infinite;
+}
+
+@keyframes beat {
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.paper h2 {
+  text-align: center;
+  font-size: clamp(24px,4vw,31px);
+  margin-bottom: 9px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #879aaa;
+  font-size: 13px;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+.paper p {
+  font-size: 16.5px;
+  line-height: 1.95;
+  margin-bottom: 18px;
+  overflow-wrap: anywhere;
+}
+
+.paper p:first-of-type {
+  color: #59738a;
+  font-size: 18px;
+}
+
+.highlight {
+  margin: 27px 0;
+  padding: 18px 20px;
+  text-align: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg,#e1efffbb,#e8e2ffbb);
+  color: #59738a;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+  box-shadow: inset 0 0 20px #ffffff70;
+}
+
+.signature {
+  text-align: right;
+  margin-top: 30px;
+  color: #637d93;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.back, .final-btn {
+  display: block;
+  margin: 28px auto 0;
+  padding: 11px 23px;
+  border: 0;
+  border-radius: 25px;
+  background: linear-gradient(135deg,#a8c4df,#b8b0dc);
+  color: white;
+  font: 14px Arial, sans-serif;
+  cursor: pointer;
+  transition: .25s;
+  box-shadow: 0 8px 20px #7e92a822;
+}
+
+.back:hover, .final-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px #7e92a844;
+}
+
+.floating {
+  position: fixed;
+  pointer-events: none;
+  animation: rise 9s linear infinite;
+  opacity: .55;
+  z-index: 1;
+  color: #789ab4;
+  font-size: 20px;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(0) rotate(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: .6;
+  }
+  to {
+    transform: translateY(-110vh) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+#birthdayPage {
+  display: none;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-card {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  width: 100%;
+  padding: clamp(25px,6vw,55px) 20px;
+  border: 1px solid #ffffffc9;
+  border-radius: 28px;
+  background: #ffffff85;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 25px 70px #52657a26;
+  animation: open .8s ease both;
+}
+
+.final-card h1 {
+  font-size: clamp(39px,8vw,68px);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.final-card p {
+  color: #71879b;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.final-tag {
+  margin-top: 15px !important;
+  font-style: italic;
+  color: #7c7ba4 !important;
+}
+
+.confetti {
+  position: fixed;
+  top: -15px;
+  width: 9px;
+  height: 14px;
+  z-index: 10;
+  pointer-events: none;
+  animation: fall linear forwards;
+  border-radius: 3px;
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(var(--drift),110vh,0) rotate(720deg);
+    opacity: .8;
+  }
+}
+
+@media(max-width:520px) {
+  #letterPage {
+    padding: 18px 10px 30px;
+  }
+
+  .paper {
+    padding: 27px 19px;
+    border-radius: 20px;
+  }
+
+  .paper p {
+    font-size: 15.5px;
+    line-height: 1.85;
+  }
+
+  .highlight {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .intro h1 {
+    font-size: 29px;
+  }
+
+  .intro p {
+    font-size: 14px;
+  }
+
+  #birthdayPage {
+    padding: 15px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *:before, *:after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section id="home" class="page">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="intro">
+    <div class="eyebrow">A little something for your day ✦</div>
+    <h1>A Little Birthday Letter For You</h1>
+
+    <button class="envelope" onclick="openLetter()" aria-label="Open birthday letter">
+      <span class="heart">💙</span>
+    </button>
+
+    <div class="tap">Tap the letter to open it ✨</div>
+  </div>
+</section>
+
+<section id="letterPage" class="page">
+  <div class="floating" style="left:8%;bottom:-30px;animation-delay:1s">♡</div>
+  <div class="floating" style="left:25%;bottom:-40px;animation-delay:4s">✦</div>
+  <div class="floating" style="right:20%;bottom:-30px;animation-delay:2s">♡</div>
+  <div class="floating" style="right:7%;bottom:-40px;animation-delay:6s">✧</div>
+
+  <article class="paper">
+    <div class="top-heart">💌</div>
+    <h2>To My Doraemon</h2>
+    <div class="subtitle">A little something I wanted to tell you...</div>
+
+    <p>Happy Birthdayyy!🥳🥳🥳</p>
+
+    <p>
+      Honestly, I don't know how to start,
+      We met at the end of our first year unexpectedly,just because of Niharika.
+      Then I were recently shifted to Niharika's room.We became so close in a very short time.
+    </p>
+
+    <p>
+      You are the first and only person in my life to become this close to me in such a short time.I still wonder how...
+    </p>
+
+    <p>
+      There are so many things I will never forget.<br>
+      The first biryani you ordered for me..<br>
+      the day you wished me for New Year from your PG terrace..<br>
+      the way you celebrated my birthday..<br>
+      the Haleem..<br>
+      the way you cared when my helath was not good..<br>
+      and a lot manyy...
+    </p>
+
+    <p>And the way you tease me for my short height..you giraffe🦒</p>
+
+    <p>
+      Whenever I feeled like I need help but I coudln't ask anyone..you will appear at the time exactly..and i don't know how you get to know about that..<br>
+      one time I went to Anantapur for hospital and came very late and i was very hugry..at the correct time you came with food😋.
+    </p>
+
+    <p>
+      I always compare you with Doraemon and myself with Nobita. 😂<br>
+      Because Doraemon was there for Nobita whenver he needed in his problems and troubles.<br>
+      And somehow, that reminds me of us and the way you have been there for me.
+    </p>
+
+    <p>
+      I don't know where life will take us after college.<br>
+      I wanna cherish our frienship..<br>
+      you are one of my friends in my college life whom I will remember my whole life.
+    </p>
+
+    <p>
+      We may speak often or not,but I will always wish good for you.<br>
+      College gave me many people, but only a few actually become a part of my life in a meaningful way.
+      You are one of those people for me.
+    </p>
+
+    <p>
+      I really want you to be happy always.<br>
+      I want you to acheive everything you want and I want you to fulfill all your dreams.<br>
+      Love yourself more that you don't need others to fulfill and live for yourself and love your life no matter wherever it takes..
+      pichi fellow🤦‍♂️🤪
+    </p>
+
+    <p>
+      I may not be there with you in every part of your life, but I will always pray for your happiness and your well-being.<br>
+      But whatever happens, I don't want to forget this friendship and all the memories we made.
+    </p>
+
+    <div class="highlight">
+      No matter where life takes us, I'll always wish the best for you.
+    </div>
+
+    <p>
+      I WANT YOU TO BE HAPPY<br>
+      Thank you for all the little things you did for me, for taking care of me, for making me laugh, for all the memories.<br>
+      Don't be sad for the things you don't have,one day you will get what you deserve.<br>
+      Enjoy your day.<br>
+      Spend your day how you want.
+    </p>
+
+    <p>
+      Once again,<br>
+      <strong>Happpyyy Birthdayyyy!</strong>
+    </p>
+
+    <div class="signature">Saniya</div>
+
+    <button class="back" onclick="goToBirthday()">
+      Close the letter &nbsp; ✨
+    </button>
+  </article>
+</section>
+
+<section id="birthdayPage" class="page">
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="final-card">
+    <h1>Happy Birthday!!!</h1>
+    <p>Keep smiling and keep dreaming. 💙</p>
+    <p class="final-tag">Your Nobita will always wish the best for you. 💙</p>
+
+    <button class="final-btn" onclick="replayConfetti()">
+      A little more celebration 🎉
+    </button>
+  </div>
+</section>
+
+<script>
+function openLetter() {
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('birthdayPage').style.display = 'none';
+  document.getElementById('letterPage').style.display = 'block';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goToBirthday() {
+  document.getElementById('letterPage').style.display = 'none';
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('birthdayPage').style.display = 'flex';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  replayConfetti();
+}
+
+function replayConfetti() {
+  const colors = [
+    '#a9c8e4',
+    '#c8bdf0',
+    '#d7edf4',
+    '#f5d6e6',
+    '#ffffff',
+    '#b9d9d2'
+  ];
+
+  for (let i = 0; i < 85; i++) {
+    const piece = document.createElement('span');
+
+    piece.className = 'confetti';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDuration = (3 + Math.random() * 3) + 's';
+    piece.style.animationDelay = (Math.random() * 0.8) + 's';
+    piece.style.setProperty(
+      '--drift',
+      (Math.random() * 180 - 90) + 'px'
+    );
+    piece.style.transform =
+      'rotate(' + Math.random() * 360 + 'deg)';
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 7000);
+  }
+}
+</script>
+
+</body>
+</html>
